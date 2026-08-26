@@ -133,10 +133,13 @@ bazel_dep(name = "toolchains_llvm", version = "1.8.0", dev_dependency = True)
 
 llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm", dev_dependency = True)
 llvm.toolchain(
+    extra_known_features = [
+        "@score_tooling//coverage:enable_llvm_coverage_for_death_tests",
+    ],
     llvm_version = "22.1.7",
     stdlib = {"linux-x86_64": "stdc++"},
 )
-use_repo(llvm, "llvm_toolchain")
+use_repo(llvm, "llvm_toolchain", "llvm_toolchain_llvm")
 
 deb = use_repo_rule("@download_utils//download/deb:defs.bzl", "download_deb")
 

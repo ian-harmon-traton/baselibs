@@ -224,3 +224,5 @@ quality_clang_tidy_config(
     unsupported_flags = [],
     visibility = ["//visibility:public"],
 )
+
+exports_files(["MODULE.bazel"])
